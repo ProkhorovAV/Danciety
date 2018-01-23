@@ -1,0 +1,46 @@
+.padding{
+	padding: 30px;
+} 
+ 
+.relative{
+	position: relative;
+}
+.button{
+	background: #fff;
+    color: #000;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+ 
+}
+.text-right{
+	text-align: right;
+}
+textarea{
+	border: none;
+}
+.color-black{
+	color: black
+}
+.post-img{
+	position: relative;
+}
+.post-img__img{
+	width: 100%;
+
+}
+.post-img__i{
+	position: absolute;
+	top:20px;
+	cursor: pointer;
+	left: calc(100% - 50px);
+	background-color: #fff;
+}
+
+.youtube-video{
+	height: 300px;
+	width: 100%;
+
+}
+

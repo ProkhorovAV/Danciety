@@ -1,0 +1,13 @@
+<div class="z-depth-2">
+	<div class="row padding-30">
+		<div class="col m6">Подписки</div>
+		<div class="col m6 right">{{pagesLength}} страниц</div>
+
+		<img [src]="item" *ngFor="let item of imagesSubscriptions">
+		 <div class="col m6">Подписчики</div>
+		<div class="col m6 right">{{userLength}} страниц</div>
+		<br>
+		<img [src]="item" *ngFor="let item of subscribers">
+	</div>
+	 
+</div>

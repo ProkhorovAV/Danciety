@@ -1,0 +1,54 @@
+<div class="registr" [style.backgroundImage]="'url('+ backgroundImage +')'"> 
+</div>
+ <div class="z-depth-2 card card__enter"> 
+ 	  <form class="col s12"> 
+	  		<div class="switch">
+			    <label  >
+			     <span [ngClass]="{'label-enter':windowsForm}">Войти</span>
+			      <input type="checkbox" (click)="checketForm()">
+			      <span class="lever"  ></span>
+			      <span [ngClass]="{'label-enter': !windowsForm}">Зарегистрироваться</span>
+			    </label>
+			  </div> 	  		 
+	      <div class="row" *ngIf="windowsForm"> 
+	        <div class="input-field col s12">
+	          <input id="last_name" type="text" class="validate" [(ngModel)]="userData.login" name="first" >
+	          <label for="last_name">Имя</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input id="last_name" type="password" class="validate" [(ngModel)]="userData.password" name="password"  >
+	          <label for="last_name">Пароль</label>
+	        </div>
+
+	         <a class="waves-effect waves-light btn blue lighten-3" (click)="goUser()">Войти</a> 
+
+	    	 <a href="main" class="waves-effect waves-light btn white color-black">Войти без регистрации</a> 
+	      </div>
+
+	      <div class="row" *ngIf="!windowsForm"> 
+	        <div class="input-field col s12">
+	          <input id="last_name" type="text" class="validate" [(ngModel)]="userData.login" name="first" >
+	          <label for="last_name">Имя</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input id="last_name" type="password" class="validate" [(ngModel)]="userData.password" name="password"  >
+	          <label for="last_name">Пароль</label>
+	        </div>
+	        <div class="input-field col s12">
+	          <input id="email" type="email" class="validate" [(ngModel)]="userData.email" name="email"  >
+	          <label for="email">E-mail</label>
+	        </div>
+	          <a class="waves-effect waves-light btn blue lighten-3" (click)="goRegistr()" >Зарегистрироваться</a>
+	            
+	      </div>
+
+	    
+    </form> 
+
+ </div>
+
+  
+ 
+        
+
+ 

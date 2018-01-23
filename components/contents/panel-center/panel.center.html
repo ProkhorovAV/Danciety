@@ -1,0 +1,8 @@
+<div class="margin-top">
+	<news-create (post)="postCreate($event)"></news-create> 
+	<div  *ngFor="let item of posts"> 
+		<news-post  [item]="item" (delitePost)="delitePost($event)"> 
+		</news-post>
+	</div>
+		  
+</div>

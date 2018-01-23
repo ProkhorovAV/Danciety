@@ -1,0 +1,23 @@
+<div class="menu" [style.backgroundImage]="'url('+ course.imageUrl[0] +')'"> 
+	
+	<div class="menu__content">
+		<div class="grid"> 
+			<img src="img/face.png" class="item-1"> 
+			<div class="text text-height item-2">{{name}}</div> 
+			<div class="text-orange text-standart item-3">{{status}}</div> 
+			<div class="text text-standart text-button item-4">подписки</div> 
+			<div class="text-orange text-height item-5">{{subscriptions}}</div> 
+			<div class="text text-standart text-button item-6">подписчики</div> 
+			<div class="text-orange text-height item-7">{{subscribers}}</div> 
+			 <div class="item-8">
+				<input (click)="onWrite()" type="button" value="Написать" class="waves-effect waves-light btn white">  
+			</div>
+			<div class="item-9">
+				<input (click)="onSearch()" type="button" value="Следить" class="waves-effect waves-light btn yellow">
+			</div>
+		</div> 
+	</div>
+	<div class="menu-shadow" [style.backgroundImage]="'url('+ course.imageUrl[1] +')'"></div>
+
+</div>
+

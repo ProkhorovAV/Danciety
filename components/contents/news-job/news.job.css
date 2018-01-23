@@ -1,0 +1,19 @@
+.padding{
+	padding: 30px;
+} 
+.name{
+	margin-top: 20px;
+	font-size: 1.2rem;
+}
+p{
+	margin: 10px 0;
+}
+.button{
+	background: #fff;
+    color: #000;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+ 
+}

@@ -1,0 +1,45 @@
+.padding{
+	padding: 30px;
+} 
+.name{
+	margin-top: 20px;
+	font-size: 1.2rem;
+}
+p{
+	margin: 10px 0;
+}
+.button{
+	background: #fff;
+    color: #000;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0;
+ 
+}
+.header{
+	font-size: 1.2rem
+}
+.images{
+	width: 100%;
+}
+iframe{
+	width: 100%;
+	height: 400px;
+}
+
+li{
+	position: absolute;
+	padding:10px;
+	margin-left: -10px;
+	border-radius: 5px;
+	 
+	cursor: pointer; 
+}
+li:hover{
+	background-color: #efeded;
+}
+
+a{
+	color: #000;
+}

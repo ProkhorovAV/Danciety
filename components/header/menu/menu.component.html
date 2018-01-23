@@ -1,0 +1,34 @@
+<div class="z-depth-2">
+	 <div class="header padding-20"  [style.backgroundImage]="'url('+ backgroundHeader +')'">
+	 	<div class="rows">
+	 		<i class="material-icons" (click)="onSubmit()">clear</i>
+	 		<img class ="right" src="img/face.png">
+	 	</div >
+	 	 <div class="rows">
+		 	<span><b>{{name}}</b></span>
+		 	<i class="material-icons right">arrow_drop_down</i>
+		 </div>
+		 <div>
+		 	{{textStatus}}
+		 </div>
+	 </div>
+	 <div class="buttons-action padding-20">
+	 	 <a class="waves-effect waves-light btn button"><i class="material-icons left">email</i>Сообщения</a>
+	 	 <a class="waves-effect waves-light btn button"><i class="material-icons left">language</i>События</a>
+	 	 <a class="waves-effect waves-light btn button"><i class="material-icons left ">videocam</i>Видео</a>
+	 	 <a class="waves-effect waves-light btn button"><i class="material-icons left ">photo_camera</i>Фото</a>
+		<a class="waves-effect waves-light btn button"><i class="material-icons left ">business_center</i>Работа</a>
+		<a class="waves-effect waves-light btn button"><i class="material-icons left ">settings</i>Настройки</a>
+	 </div>
+	 <hr>
+	 <div class="subscriptions padding-20">
+	 	<div class="subscriptions-header">Подписки {{itemsSubscriptions.length}}</div>
+	 	<div class="rows" *ngFor="let item of itemsSubscriptions">
+	 		<img [src]="item.imgSrc">
+	 		<div class="subscriptions-name">{{item.name}}</div>
+	 	</div >  
+	 	  
+	   
+	 </div>
+	
+</div>

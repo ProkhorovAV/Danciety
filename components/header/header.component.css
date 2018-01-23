@@ -1,0 +1,30 @@
+.header{
+	height: 55px;
+	background-color: #f7c310; 
+	position: fixed;
+    width: 100%;
+    z-index: 15;
+}
+.material-icons{
+	margin-top: 15px;
+	cursor: pointer;
+}
+.header__logo{
+	text-align: center;	
+}
+.header__logo-img{
+	margin-top: 15px;
+}
+.header__icon-right{
+	text-align: right;
+}
+ .menu{
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	z-index: 200;
+ 	width: 300px;
+ }
+ .container{
+ 	position: relative;
+ }

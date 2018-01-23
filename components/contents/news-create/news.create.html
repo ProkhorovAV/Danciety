@@ -1,0 +1,35 @@
+<div class="row z-depth-2 padding">
+	<div class="col s8"> 
+		<a class="btn  button" (click)="onPhoto()"><i class="material-icons left" >photo_camera</i>Фото </a>
+		<a class="btn button" (click)="onVideo()"><i class="material-icons left">videocam</i>Видео</a>
+	</div> 
+	<div class="col s4 text-right">
+		<a class="waves-effect waves-light btn button"  (click)="onSettings()"><i class="material-icons right">more_vert</i>Новость</a>
+	</div>
+	<div class="col s12" *ngIf="isPhoto" >
+	   <label for="single">Добавить фото:</label>
+	   <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" /> 
+	</div> 
+	<div *ngIf="isVideo" class="col s12">
+		<label for="video">Добавить видео: (ссылка с YouTube)</label>
+	    <input type="text" name="video" #urlYoutube placeholder="https://youtu.be/e5-y_75xMHg" /> 
+	    <input type="button" class="waves-effect waves-light btn" (click)="postData.addVideos(urlYoutube.value)"  value="Добавить">
+	</div> 
+	<div class="col s12">
+		<input type="text" placeholder="Заголовок (по желанию)" [(ngModel)]="postData.caption">
+		<div class="row" >
+			<div class="post-img col s12" *ngFor="let image of postData.images">
+				<img class="post-img__img" src="{{urlUploads}}{{image}}" >
+				<i class="material-icons post-img__i z-depth-2" (click)="postData.deliteImages(image)">delete</i>
+			</div> 
+		</div>
+		<div *ngFor="let itemv of postData.videos"  class="col s12 relative">
+			<iframe class="youtube-video" frameborder="0" allowfullscreen [src]="itemv.iframe"></iframe>
+			<i class="material-icons post-img__i z-depth-2" (click)="postData.deliteVideos(itemv)">delete</i>
+		</div>
+		
+		<textarea placeholder="текст" [(ngModel)]="postData.text"></textarea>
+		<input type="button" value="Опубликовать" class="waves-effect waves-light btn yellow color-black" (click)="onCreatePost()">
+	</div> 
+	
+</div>

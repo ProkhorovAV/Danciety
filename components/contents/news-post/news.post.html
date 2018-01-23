@@ -1,0 +1,39 @@
+<div class="row z-depth-2 padding">
+	<div class="s12">
+		<div class="col s2">
+			<img src="img/face.png"> 
+		</div> 
+		<div class="col s9 name">
+			<div>
+				<b>name</b>
+			</div>
+			<div>{{item.date | date: 'd.M.yy, h:mm a'}}</div> 
+		</div>
+		<div class="col s1"> 
+			<a class="dropdown-button waves-effect waves-light btn button" (click)="isMenu=!isMenu" ><i class="material-icons right">more_vert</i></a>  
+			<ul *ngIf="isMenu">
+			    <li class="z-depth-2" (click)="delite(item)"><a >Удалить</a></li> 
+			</ul> 
+		</div>		
+	</div>
+	<div class="row"></div>
+	<p class="s12 header">
+		 {{item.caption}}
+	</p>
+	<p>
+		<img class="images" src="{{urlUploads}}{{img}}" *ngFor="let img of item.images">
+	</p>
+	<p *ngFor="let vide of item.videos"> 
+		<iframe class="youtube-video" [src]="vide.iframe" frameborder="0" allowfullscreen></iframe>
+	 </p> 
+	<p class="s12">
+		 {{item.text}}
+	</p>
+	<hr>
+	<div>
+		<b>Подробнее</b>
+		<i class="material-icons right">sentiment_very_satisfied</i>
+		<span class="right">Круто</span>
+	</div>
+ 
+</div>

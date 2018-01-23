@@ -1,0 +1,24 @@
+<div class="z-depth-2">
+	<div class="row padding-30">
+		 <div>
+		 	<span class="name">Отзывы</span>
+		 	<span class="znak">+</span>
+		 	<span class="number">{{reviews.plus}}</span>
+		 	<span class="znak">-</span>
+		 	<span class="number">{{reviews.minus}}</span>
+		 	<span class="right">всего:35</span>
+		 </div>
+		 <div *ngFor="let item of items " >
+		 	<div class="col s4"  >
+		 		<img [src]="item.imgSrc">
+		 	</div>
+		 	<div class="col s8 ">
+		 		<div class="persone-name">{{item.name}}</div>
+		 		<div>{{item.text}}</div>
+		 	</div>
+		 	<input type="button" value="Подписать отзыв" class="waves-effect waves-light btn yellow">	 
+		 </div>
+		 
+	</div>
+	 
+</div>
