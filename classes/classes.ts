@@ -1,6 +1,6 @@
 import { PostEnum } from '../classes/emuns';
 import { IUser, IPhoto, IPost } from './interfaces';
- import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export class JobClass{
     id:number;
@@ -9,6 +9,12 @@ export class JobClass{
     name:string;
     text:string;
 };
+
+export class RegistrClass{
+	login:string;
+	password:string;
+	email:string; 
+}
 
 export class User implements IUser{
 	idUser:number = 0;
@@ -22,7 +28,6 @@ export class User implements IUser{
 	phone:string = "";
 	web:string =""; 
 	text:string = "";
-
 
 	constructor(){
 		this.date = new Date(); 
@@ -136,14 +141,7 @@ export class simplePost implements IPost{
  		  
  		this.idGroup = groupId;
 		 
-
  	}
 
-
-
- 	
-
-
- 
 }
  

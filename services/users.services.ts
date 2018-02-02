@@ -1,10 +1,14 @@
 import {Injectable} from '@angular/core';  
 import { User } from '../classes/classes';
-//import { HttpHeaders, } from '@angular/common/http';
-import { Http, Headers} from '@angular/http';
-//import {  Response } from '@angular/http';
+ 
+import { Http, Headers, RequestOptions,Response} from '@angular/http';
+ 
  
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
+import { Observable } from 'rxjs/Observable';
+import { RegistrClass } from '../classes/classes';
 
 @Injectable()
 export class UsersService{
@@ -41,24 +45,7 @@ export class UsersService{
         
     }
 
-    // получение данных о пользователе по паролю и логину
-    getUserId(login:string,password:string){
-       
-        let body = {
-            login:login,
-            password:password
-        }
-      
-        var headers = new Headers();
-          headers.append('Content-Type', 'application/json');
-      
-        return this.http
-            .post(this.url+'/getUser', 
-                body, 
-                { headers: headers }
-            )
-        
-    }
+   
     // регистрация пользователя
     RegistrUser(login:string, password:string,email:string){
  
@@ -77,4 +64,41 @@ export class UsersService{
                 { headers: headers }
             )
     }
+////////////////////////////
+     //  получение данных о пользователе по паролю и логину
+    getUserId(body:RegistrClass):Observable<any> {
+          
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+        //headers.append('Content-Type', 'application/json');
+ 
+      
+        return this.http
+            .post(this.url+'/getUser', 
+                body, 
+                options
+            )
+            .map((res:Response) => res.json())
+            .catch((error:any) => {
+                Observable.throw('Server error')
+                return error
+            }) 
+  
+        
+    }
+
+
+    addComment (body: Object): Observable<Comment[]> {
+        let bodyString = JSON.stringify(body); // Stringify payload
+        let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options       = new RequestOptions({ headers: headers }); // Create a request option
+
+        return this.http.post(this.url+'/getUser', body, options) // ...using post request
+                         .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')) //...errors if any
+    }   
+
+
+
+
 }

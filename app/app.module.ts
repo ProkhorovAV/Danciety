@@ -26,7 +26,7 @@ import { PanelCenter} from '../components/contents/panel-center/panel.center';
 
 import { UsersService } from '../services/users.services';
 import { Postservices } from '../services/posts.services';
-import { LoadService } from '../services/load.service'
+import { LoadService } from '../services/load.service';
 // глобатьная переменная window для библиотеки material
 import {WindowRef} from '../services/window.service';
 // определение маршрутов
