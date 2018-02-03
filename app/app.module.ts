@@ -22,6 +22,7 @@ import { MenuComponent} from '../components/header/menu/menu.component';
 import { AppReg} from '../components/reg/reg.component';
 import { MainComponent } from '../components/main/main.component'; 
 import { PanelCenter} from '../components/contents/panel-center/panel.center';
+import { SettingsService } from '../services/settings.services'
 
 
 import { UsersService } from '../services/users.services';
@@ -78,7 +79,8 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
      UsersService,
      Postservices,
      LoadService,
-     WindowRef
+     WindowRef,
+     SettingsService
 
    ],
     

@@ -21,12 +21,14 @@ import 'rxjs/add/operator/catch';
 
 })
 
-
-
+ 
 export class AppReg {
 
 	// переменная для формы
 	windowsForm:boolean=true;
+
+	// скдалываем ошибки
+	errorArray = []
 
 	// переменная для сообщений
 	Materialize:any;
@@ -68,66 +70,46 @@ export class AppReg {
    
 	 // Кнопка перехода на новую страницу
     goUser() {
-    
-    	//this.usersServices.addComment({})
-
+     
 		this.usersServices.getUserId(this.userData)
 		
     	.subscribe(
-                comments => {
-                    // Emit list event
-                     console.log(comments)
+
+                response => {
+                    if (response.id===-1){ 
+			      		 
+			      		this.Materialize.toast('Не верное имя или пароль', 2000)
+
+			      		return   
+
+		     		}else{
+		     			
+		     			this.usersServices.setUser(response);
+
+		     			this.Materialize.toast('Добрый день '+response.name, 1000)
+		   
+				        this.router.navigate(
+				            ['/main']
+				        );
+		            }
                 }, 
                 err => {
-                	console.log('qw2eq')
-                    // Log errors if any
-                    console.log(err);
+
+                	console.log('Ошибка сервера');
+                	this.errorArray.push(err);                    
+                    console.log(this.errorArray);
                 });
 
     	return ;
     }
 
     	
-
-/*
  
-    	.map(response =>  {
-     		 
-    		return response.json()
-    	})        
-    	
- 		
-		 .subscribe(
- 
-            response => { 
- 				 
-					 
-	      		if (response.id===-1){
-
-		      		console.log('Не верный пароль')
-
-		      		return   
-
-	     		}else{
-	     			
-	     			this.usersServices.setUser(response)
-	   
-			        this.router.navigate(
-			            ['/main']
-			        );
-	            }
-           }
-        ); 
- 
-*/
-    
 
     // Регистрация
     goRegistr(){
 
-		this.usersServices.RegistrUser(this.userData.login,this.userData.password,this.userData.email)
-
-		.map(response => response.json() )
+		this.usersServices.RegistrUser(this.userData) 
 
         .subscribe(
 
@@ -140,7 +122,13 @@ export class AppReg {
             }else{
             	this.Materialize.toast('Регистрация не прошла!', 2000)
             }
-           }
+           }, 
+            err => {
+
+            	console.log('Ошибка сервера');
+            	this.errorArray.push(err);                    
+                console.log(this.errorArray);
+            }
         );
     }
 }
