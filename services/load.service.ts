@@ -13,7 +13,7 @@ import { FileUploader , FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 	onSuccessItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any {
         let data = JSON.parse(response); //success server response
         this.callback(data)
-//        console.log(data)
+ 
     }
 
     onErrorItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any {
