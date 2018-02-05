@@ -19,8 +19,8 @@ import { NewsCreate} from '../components/contents/news-create/news.create';
 import { NewsJob} from '../components/contents/news-job/news.job';
 import { NewsPost} from '../components/contents/news-post/news.post';
 import { MenuComponent} from '../components/header/menu/menu.component';
-import { AppReg} from '../components/reg/reg.component';
-import { MainComponent } from '../components/main/main.component'; 
+import { AppReg} from '../pages/reg/reg.component';
+import { MainComponent } from '../pages/main/main.component'; 
 import { PanelCenter} from '../components/contents/panel-center/panel.center';
 import { SettingsService } from '../services/settings.services'
 

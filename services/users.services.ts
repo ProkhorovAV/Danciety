@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';   
+import { Injectable } from '@angular/core';   
 import { Http, Headers, RequestOptions,Response} from '@angular/http';
     
 import { Observable } from 'rxjs/Observable';
@@ -14,10 +14,9 @@ export class UsersService{
     private user:User = new User();
 
     private options:RequestOptions;
-   
-    constructor( private http:Http,
 
-                private settings:SettingsService){
+    constructor( private http:Http,
+                 private settings:SettingsService){
  
             let headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -29,7 +28,7 @@ export class UsersService{
     // локаьное хранилище
     getUser():User{
         
-        const token = localStorage.getItem('user');
+        const token = localStorage.getItem(this.settings.getLSUser());
 
         if (token!=null) this.user = JSON.parse(token)
 
@@ -43,34 +42,30 @@ export class UsersService{
 
         let userSave = JSON.stringify(user)
 
-        localStorage.setItem('user', userSave);
+        localStorage.setItem(this.settings.getLSUser(), userSave);
         
     }
 
    
     // регистрация пользователя
     RegistrUser(body:RegistrClass):Observable<any>{
-    
-        return this.http
-            .post(this.settings.getUrlServer()+'/setRegistrUser', 
-                body, 
-                this.options
-            )
-            .map((res:Response) => res.json())
 
-            .catch((error:any) => {
-
-                Observable.throw('Server error')
-
-                return error
-            }) 
+        return this.postHTTP(body,this.settings.setRegistrUser())
+     
     }
  
-     //  получение данных о пользователе по паролю и логину
+    //  получение данных о пользователе по паролю и логину
     getUserId(body:RegistrClass):Observable<any> {
-            
+
+        return this.postHTTP(body,this.settings.getUser())
+ 
+    }
+
+    // пост запрос
+    postHTTP( body:RegistrClass , url:string ){
+
         return this.http
-            .post(this.settings.getUrlServer()+'/getUser', 
+            .post(url, 
                 body, 
                 this.options
             )
@@ -82,8 +77,6 @@ export class UsersService{
 
                 return error
             }) 
-  
-        
     }
  
 

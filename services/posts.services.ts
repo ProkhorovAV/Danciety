@@ -3,16 +3,18 @@ import { JobClass, simplePost }  from '../classes/classes';
 import { IPost } from '../classes/interfaces';
 import { Http } from '@angular/http';
 import { Headers } from '@angular/http';
- import {Injectable} from '@angular/core';  
- import { DomSanitizer } from '@angular/platform-browser';
+import { Injectable} from '@angular/core';  
+import { DomSanitizer } from '@angular/platform-browser';
+import { SettingsService } from '../services/settings.services';
  
 @Injectable()
 export class Postservices{
 
-	 url:string = "http://localhost:4000";
+	 //url:string = "http://localhost:4000";
 
 	 constructor(private http:Http,
-	 	private sanitizer:DomSanitizer){
+	 	private sanitizer:DomSanitizer,
+	 	private settings:SettingsService){
 
 	 }
 
@@ -46,7 +48,7 @@ export class Postservices{
 
 	getPostsHttp(){
 
-		return this.http.get(this.url+'/getPosts')
+		return this.http.get(this.settings.getPosts())
 	}
 
 	setPost(idUser:number, status:PostEnum,
@@ -64,32 +66,23 @@ export class Postservices{
 
 	// создание простого поста
 	createPost(post:simplePost){
-
-		console.log(post)
- 
-        var headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-       
+  
         return this.http
-            .post(this.url+'/setPostSimple', 
+            .post(this.settings.setPostS(), 
                 post, 
-                { headers: headers }
+                this.settings.optionHTTP()
             )
   
 	}
 
 	// удаление поста
 	delitePost(post:any){
+
 		// класс simplePost замена на any для _id
-
-		console.log(post)
-
-        var headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-       
+  
         return this.http
-            .delete(this.url+'/delitePostSimple/'+post._id, 
-                { headers: headers }
+            .delete(this.settings.dPostSimpleId(post), 
+                this.settings.optionHTTP()
             )
 
 	}
@@ -97,7 +90,7 @@ export class Postservices{
 	//получение расшифрованного текста
  	getPostSanitizer(posts:simplePost[]){
  
- 		let that =this
+ 		let that = this
  
  		posts.forEach(function(argument,index){
 
@@ -121,8 +114,7 @@ export class Postservices{
 			})
 
 			posts[index].videos =  normalize
- 
- 			 
+  
  		})
 
  		return posts

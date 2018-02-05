@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from'@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { UsersService } from '../../../services/users.services'; 
 import { simplePost } from '../../../classes/classes';
 import { LoadService } from '../../../services/load.service';
@@ -6,10 +8,7 @@ import { LoadService } from '../../../services/load.service';
 
 // для загрузки файла
 import { FileUploader , FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
-
-
-import { DomSanitizer } from '@angular/platform-browser';
-
+ 
 
 @Component({
 	selector: 'news-create',
@@ -27,12 +26,18 @@ export class NewsCreate{
 
 	// загрузка файлов
 	uploader:FileUploader;
+
+	// открыть панель для загрузки фотограйии
+	isPhoto:boolean=false;
+
+	// открыта панетль видео
+	isVideo:boolean=false;
  
 	//"https://youtu.be/e5-y_75xMHg";
   
 	constructor( private userservice : UsersService,
-		private loadService:LoadService,
-		private _sanitizer: DomSanitizer  
+				 private loadService:LoadService,
+				 private _sanitizer: DomSanitizer  
 		){
 
 		this.postData = new simplePost(this._sanitizer);
@@ -41,26 +46,21 @@ export class NewsCreate{
 
 		let that = this; 
 
-		// инициализация закгузки файлов
-		this.uploader = loadService.getUpload(function(argument){
-			 
-			that.postData.addImages(argument.file.filename)
-			 
-		}) 
+		// инициализация загузки файлов
+		this.uploader = loadService.getUpload((argument) => that.postData.addImages(argument.file.filename)) 
+
 	}
    
 	
 	// внешниее событие
 	@Output() post = new EventEmitter();
 	
-	// открыть панель для загрузки фотограйии
-	isPhoto:boolean=false;
-
+	 
 	onPhoto(){
 
 		this.isPhoto = !this.isPhoto;
 	}
-	isVideo:boolean=false;
+	
 	onVideo(){ 
 
 		this.isVideo = !this.isVideo;
@@ -68,13 +68,14 @@ export class NewsCreate{
 	}
    
 	onSettings(){
+
 		console.log('Настройки')
+
 	}
 	
 
 	// публикация поста
-	onCreatePost(){
-  
+	onCreatePost(){ 
 		  
 		this.post.emit(this.postData.getPost())	
 		

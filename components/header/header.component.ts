@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['header.component.css' ]
 })
 export class HeaderComponent {
+
+    menu:boolean = false;
+    
   	onMenu(){      
   		this.menu =! this.menu
   	}
@@ -19,6 +22,6 @@ export class HeaderComponent {
   		console.log('Logo')
   	}
 
-    menu:boolean = false;
+    
  
 }

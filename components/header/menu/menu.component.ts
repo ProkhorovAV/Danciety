@@ -7,7 +7,7 @@ interface ISubscriptions{
 }
 
 @Component({
-	selector:"app-menu",
+	selector:"header-menu",
 	templateUrl:"menu.component.html",
 	styleUrls:['menu.component.css']
 })
